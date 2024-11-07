@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Premium Plans | CartelUG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #1DB954;
+      --secondary-color: #1ED760;
+      --text-color: #111;
+      --bg-color: #f0f3f4;
+      --card-bg: #fff;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      text-align: center;
+      padding: 30px;
+      border-radius: 15px;
+      background-color: var(--card-bg);
+      box-shadow: 0px 8px 30px var(--shadow-color);
+    }
+    h1 {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .intro-text {
+      font-size: 1.2em;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .plan {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .plan:hover {
+      transform: scale(1.05);
+      border-color: var(--primary-color);
+      box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .plan-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .plan-price {
+      font-size: 1.8em;
+      color: var(--secondary-color);
+      font-weight: 700;
+      margin: 15px 0;
+    }
+    .plan-details {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .pay-btn {
+      display: inline-block;
+      padding: 10px 25px;
+      font-size: 1em;
+      font-weight: 600;
+      color: #fff;
+      background: var(--primary-color);
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .pay-btn:hover {
+      background: var(--secondary-color);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: var(--card-bg);
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 12px;
+      text-align: center;
+      animation: slideIn 0.4s;
+      position: relative;
+    }
+    .modal h2 {
+      color: var(--primary-color);
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+    .modal p {
+      font-size: 1.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .confirm-btn {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .confirm-btn:hover {
+      background: var(--secondary-color);
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Choose Your Spotify Plan</h1>
+    <p class="intro-text">Flexible plans to suit every music lover. Pay securely and enjoy uninterrupted streaming.</p>
+    
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-title">60 Days Plan</div>
+        <div class="plan-price">UGX 20,000</div>
+        <div class="plan-details">Premium streaming for 60 days</div>
+        <a href="#" class="pay-btn" onclick="openModal('60 Days Plan', 'UGX 20,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">90 Days Plan</div>
+        <div class="plan-price">UGX 30,000</div>
+        <div class="plan-details">Premium streaming for 90 days</div>
+        <a href="#" class="pay-btn" onclick="openModal('90 Days Plan', 'UGX 30,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">180 Days Plan</div>
+        <div class="plan-price">UGX 60,000</div>
+        <div class="plan-details">Premium streaming for 180 days</div>
+        <a href="#" class="pay-btn" onclick="openModal('180 Days Plan', 'UGX 60,000')">Pay Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">1 Year Plan</div>
+        <div class="plan-price">UGX 108,000</div>
+        <div class="plan-details">Enjoy a full year of Premium streaming</div>
+        <a href="#" class="pay-btn" onclick="openModal('1 Year Plan', 'UGX 108,000')">Pay Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Payment Instructions</h2>
+      <p>Plan: <span id="planName"></span></p>
+      <p>Price: <span id="planPrice"></span></p>
+      <p>Please pay via Mobile Money:</p>
+      <ul>
+        <li>MTN: <strong>0762193386</strong> (Line name: Alfred)</li>
+        <li>Airtel: <strong>0744688623</strong> (Line name: Alfred)</li>
+      </ul>
+      <p>After payment, confirm your payment with us on WhatsApp by clicking the button below.</p>
+      <button class="confirm-btn" onclick="confirmPayment()">Confirm Payment on WhatsApp</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(planName, planPrice) {
+      document.getElementById("planName").textContent = planName;
+      document.getElementById("planPrice").textContent = planPrice;
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+    function confirmPayment() {
+      window.location.href = "https://wa.link/li7eru";
+    }
+  </script>
+</body>
+</html>
